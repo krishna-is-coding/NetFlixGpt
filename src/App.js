@@ -1,10 +1,16 @@
-import Body from "./Componts/Body";
+// App.js
+import React from "react";
+
+import Body from "./Componts/Body.js";
+import { Provider } from "react-redux";
+
+import appstore from "./utils/appstore.js";
 
 function App() {
   return (
-    <div>
+    <Provider store={appstore}>
       <Body />
-    </div>
+    </Provider>
   );
 }
 
