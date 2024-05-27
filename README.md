@@ -18,6 +18,16 @@
 -BugFix:if the user not logged in Redirected /Browse the to Login Page ang vice-versa
 -unsubscribe on the onAuthStateChange callback
 -Add hardcode vale kept in constant
+-Register TBMB Api and create an app & get acess token
+-Get Data from TBMB now playing movies list api
+-Custom Hook for Now Playing Movies & tailer also
+-Create moviesSlice
+-Update Store with movie data
+-Planing for MainContainer & Secondary Container
+-Fetch Data for Trailer video
+-Update Store with Trailer video data
+-Embedded the utube video & make it autoplay & mute also
+-Tailwind Classes to make Main Container | look awesome
 
 #Feature
 -login/Sign up Force
