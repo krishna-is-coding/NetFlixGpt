@@ -6,17 +6,17 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { backgro, user_AVATAR } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
+
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const fullNameRef = useRef(null);
@@ -41,8 +41,7 @@ const Login = () => {
           // for updating profile
           updateProfile(user, {
             displayName: fullNameRef.current.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/150548664?s=400&u=d3c1c40591db30642fb9511ed7e23708a7dc9406&v=4",
+            photoURL: user_AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -55,8 +54,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-
-              Navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -64,7 +61,6 @@ const Login = () => {
             });
 
           console.log(user);
-          Navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -80,8 +76,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("login", user);
-
-          Navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -98,10 +92,7 @@ const Login = () => {
   return (
     <div>
       <div className="absolute">
-        <img
-          src=" https://assets.nflxext.com/ffe/siteui/vlv3/93da5c27-be66-427c-8b72-5cb39d275279/94eb5ad7-10d8-4cca-bf45-ac52e0a052c0/IN-en-20240226-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt="bgImage"
-        />
+        <img src={backgro} alt="bgImage" />
       </div>
       <Browse />
 

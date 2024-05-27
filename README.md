@@ -14,6 +14,10 @@
 -Implemented Sign Out
 -Update Profile
 -Fetch from TMDM movie
+-BugFix: Sign up user display nad profile picture update
+-BugFix:if the user not logged in Redirected /Browse the to Login Page ang vice-versa
+-unsubscribe on the onAuthStateChange callback
+-Add hardcode vale kept in constant
 
 #Feature
 -login/Sign up Force
