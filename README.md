@@ -28,6 +28,10 @@
 -Update Store with Trailer video data
 -Embedded the utube video & make it autoplay & mute also
 -Tailwind Classes to make Main Container | look awesome
+-GPT Search page
+-GPT Search Bar
+(Bonus) Multi-language Feature in our App
+-Intergrate Gpt APIS(open key )
 
 #Feature
 -login/Sign up Force

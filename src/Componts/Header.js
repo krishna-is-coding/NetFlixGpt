@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { user_log } from "../utils/constant";
+import { SUPPORTED_lANGUAGES, user_log } from "../utils/constant";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { lang } from "../utils/languageContants";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.user); // Make sure user state is populated correctly
+  const user = useSelector((store) => store.user);
+  // const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignout = () => {
     signOut(auth)
@@ -41,6 +45,12 @@ const Header = () => {
     });
     return () => unsubscribe();
   }, []);
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearchView());
+  };
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
 
   return (
     <div className="w-screen h- [6vh] px-20  flex bg-gradient-to-b from-black justify-between absolute z-10">
@@ -49,8 +59,28 @@ const Header = () => {
       </div>
       {user && ( // Use conditional rendering to check if user is signed in
         <div className="flex  p-8 space-x-2  ">
+          {/* {showGptSearch && (*/}
+          <select
+            className="p-2 bg-red-500 text-white"
+            onChange={handleLanguageChange}
+          >
+            {SUPPORTED_lANGUAGES.map((lang) => (
+              <option key={lang.identifer} value={lang.identifer}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+          {/* )}*/}
+          <button
+            onClick={handleGptSearch}
+            className="bg-red-400 my-1 rounded-lg"
+          >
+            {" "}
+            GPT Search
+            {/*{showGptSearch ? "Homepage" : "GPT Search"}*/}
+          </button>
           <img className="w-8 h-8" alt="usericon" src={user.photoURL} />
-          <button onClick={handleSignout} className="font-bold text-red-950">
+          <button onClick={handleSignout} className="font-bold text-red-400">
             (Sign Out)
           </button>
         </div>
